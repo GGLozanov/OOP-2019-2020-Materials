@@ -11,15 +11,14 @@ import com.lozanov.pizza.Pizza;
 import com.lozanov.pizzaiolo.Pizzaiolo;
 import com.lozanov.pizzeria.Pizzeria;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Main {
 
     public static void main(String[] args) {
         List<Pizzaiolo> pizzaiolos = new ArrayList<>();
-        List<Ingredient> ingredients = new ArrayList<>();
+        Set<Ingredient> ingredients = new HashSet<>();
         List<Furnace> furnaces = new ArrayList<>();
 
         List<Order> orders = new ArrayList<>();
@@ -29,7 +28,7 @@ public class Main {
         while(scanner.hasNextLine()) {
             String line = scanner.nextLine();
 
-            String[] lineAttributes = line.split(",");
+            String[] lineAttributes = line.split(", "); // account for spaces (handle many w/ regex)
 
             if(lineAttributes.length == 0) {
                 System.out.println("Invalid user input! Must enter something");
@@ -68,7 +67,7 @@ public class Main {
                     IngredientType ingredientType;
 
                     try {
-                        ingredientType = IngredientType.valueOf(lineAttributes[2]);
+                        ingredientType = IngredientType.valueOf(lineAttributes[2].toUpperCase());
                     } catch(IllegalArgumentException e) {
                         System.out.println("Invalid com.lozanov.ingredient type! Cancelling creation!");
                         break;
@@ -76,8 +75,10 @@ public class Main {
 
                     Ingredient ingredient = new Ingredient(lineAttributes[1], ingredientType);
 
-                    if(ingredients.contains(ingredient)) {
-                        System.out.println("Ingredient already exists!");
+                    // doesn't work with contains() for some reason; probably doesn't use equals()
+                    if(ingredients.stream()
+                            .anyMatch(ingr -> ingr.equals(ingredient))) {
+                        System.out.println("Ingredient already exists! Won't add to ingredient list!");
                     } else {
                         ingredients.add(ingredient);
                     }
@@ -94,18 +95,29 @@ public class Main {
                         break;
                     }
 
-                    List<Ingredient> pizzaIngredients = new ArrayList<>();
+                    Set<Ingredient> pizzaIngredients = new HashSet<>();
+                    AtomicBoolean isPizzaInvalid = new AtomicBoolean(false); // for use in lambda (avoid final)
 
-                    for(int ingredientIDX = 2; ingredientIDX < lineAttributes.length; ingredientIDX++) {
-                        final int finalIngredientIDX = ingredientIDX; // required for current stream iteration
-                        ingredients.stream()
-                                .filter(ingr -> lineAttributes[finalIngredientIDX].equals(ingr.getName()))
-                                .findFirst()
-                                .ifPresentOrElse(
-                                    pizzaIngredients::add,  // adds the com.lozanov.pizza com.lozanov.ingredient if present
-                                    () -> System.out.println("Ingredient given isn't found in listed ingredients! Continuing without com.lozanov.ingredient!")
-                                        // prints out error otherwise
-                        );
+                    try {
+                        for(int ingredientIDX = 2; ingredientIDX < lineAttributes.length; ingredientIDX++) {
+                            final int finalIngredientIDX = ingredientIDX; // required for current stream iteration
+                            ingredients.stream()
+                                    .filter(ingr -> lineAttributes[finalIngredientIDX].equals(ingr.getName()))
+                                    .findFirst()
+                                    .ifPresentOrElse(
+                                        pizzaIngredients::add,
+                                        () -> isPizzaInvalid.set(true)
+                                    );  // adds the com.lozanov.pizza com.lozanov.ingredient if present
+                                            // breaks loop otherwise and cancels entering
+
+                            if(isPizzaInvalid.get()) {
+                                throw new InvalidPizzaException();
+                            }
+                        }
+                    } catch(InvalidPizzaException e) {
+                        System.out.println("Invalid pizza given! No com.lozanov.ingredient found to create " +
+                                "pizza with or the same ingredients were given twice!");
+                        break;
                     }
 
                     try {
@@ -115,18 +127,24 @@ public class Main {
                     }
 
                     break;
+                default:
+                    System.out.println("Invalid input! Commands are: 'HirePizzaMan', 'Stove', 'Ingredient', and 'Order'");
+                    break;
             }
 
-            // no stove error handle
-            // no com.lozanov.ingredient error handle
-            // invalid com.lozanov.pizza error handle
+            // no stove error handle -> check
+            // no com.lozanov.ingredient error handle -> check
+            // invalid com.lozanov.pizza error handle -> check
+            // duplicate ingredient error handle -> check
+            // invalid input error handle -> check
         }
 
         Pizzeria pizzeria = new Pizzeria(pizzaiolos, ingredients, furnaces);
 
         orders.forEach(order -> {
             try {
-                pizzeria.receiveOrder(order);
+                String deliveredMessage = pizzeria.receiveOrder(order);
+                System.out.println(deliveredMessage);
             } catch(NoPizzaioloException e) {
                 System.out.println("No active com.lozanov.pizzaiolo to take current com.lozanov.order!");
             } catch(NoFurnaceException e) {

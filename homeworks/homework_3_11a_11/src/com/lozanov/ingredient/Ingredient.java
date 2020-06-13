@@ -30,4 +30,11 @@ public class Ingredient {
     public void setIngredientType(IngredientType ingredientType) {
         this.ingredientType = ingredientType;
     }
+
+    @Override
+    public boolean equals(Object obj) { // used when comparing whether an ingredient already exists in a set
+        return obj instanceof Ingredient &&
+                ((Ingredient) obj).getName().equals(name) &&
+                ((Ingredient) obj).getIngredientType() == ingredientType;
+    }
 }

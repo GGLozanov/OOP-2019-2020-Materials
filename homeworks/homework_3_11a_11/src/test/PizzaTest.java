@@ -4,30 +4,35 @@ import com.lozanov.enums.IngredientType;
 import com.lozanov.exceptions.InvalidPizzaException;
 import com.lozanov.ingredient.Ingredient;
 import com.lozanov.pizza.Pizza;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class PizzaTest {
     Pizza pizza;
 
-    List<Ingredient> pizzaValidIngredients = new ArrayList<>(){{
+    Set<Ingredient> pizzaValidIngredients = new HashSet<>(){{
         add(new Ingredient("White dough", IngredientType.DOUGH));
         add(new Ingredient("Ketchup", IngredientType.SAUCE));
         add(new Ingredient("White cheese", IngredientType.CHEESE));
     }};
 
-    List<Ingredient> pizzaInvalidIngredients = new ArrayList<>(){{
-        add(new Ingredient("White dough", IngredientType.SAUCE));
+    Set<Ingredient> pizzaInvalidIngredients = new HashSet<>(){{
+        add(new Ingredient("Mayonnaise", IngredientType.SAUCE));
         add(new Ingredient("Ketchup", IngredientType.SAUCE));
         add(new Ingredient("White cheese", IngredientType.CHEESE));
     }};
 
     @Test
-    void assertPizzaCreationCorrect() throws InvalidPizzaException {
+    void assertPizzaCreationCorrect() {
         assertDoesNotThrow(() -> new Pizza(pizzaValidIngredients));
     }
 

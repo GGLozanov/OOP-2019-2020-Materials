@@ -9,6 +9,7 @@ import com.lozanov.pizza.Pizza;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,9 +38,9 @@ class FurnaceTest {
 
         furnace.addFurnaceWorkQuery(
             new FurnaceWork(
-        1,
-        1,
-                    new Pizza(new ArrayList<>(){{
+                    1,
+                    1,
+                    new Pizza(new HashSet<>(){{
                         add(new Ingredient("White dough", IngredientType.DOUGH));
                         add(new Ingredient("Ketchup", IngredientType.SAUCE));
                         add(new Ingredient("White cheese", IngredientType.CHEESE));

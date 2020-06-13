@@ -56,17 +56,15 @@ public class FurnaceWork implements Runnable, ThreadStatusFormatter {
 
         try {
             if(furnaceWorkFile.getParentFile().mkdirs() && furnaceWorkFile.createNewFile()) {  // if a new file needs to be created (along with its dirs)
-                System.out.println("File created: " + furnaceWorkFile.getName());
+                System.out.println("FurnaceWork file created: " + furnaceWorkFile.getName());
             } else {
-                System.out.println("File already exists: " + furnaceWorkFile.getName());
+                System.out.println("FurnaceWork file already exists: " + furnaceWorkFile.getName());
             }
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Couldn't create furnaceWork w/ ID " + uniqueFurnaceWorkID + " file! Aborting com.lozanov.pizza creation!");
             return;
         }
-
-        System.out.println("Passed file creation");
 
         FileWriter fileWriter; // used to write into the file (and append to it)
 
@@ -78,11 +76,7 @@ public class FurnaceWork implements Runnable, ThreadStatusFormatter {
             return;
         }
 
-        System.out.println("Created FileWriter");
-
         String furnaceWorkStartFormat = getFormat(true);
-
-        System.out.println("Start format: " + furnaceWorkStartFormat);
 
         try {
             fileWriter.write(furnaceWorkStartFormat);
@@ -91,8 +85,6 @@ public class FurnaceWork implements Runnable, ThreadStatusFormatter {
             e.printStackTrace();
             return;
         }
-
-        System.out.println("Wrote to FileWriter: " + furnaceWorkStartFormat);
 
         try {
             requestedPizza.bakePizza();
@@ -111,8 +103,6 @@ public class FurnaceWork implements Runnable, ThreadStatusFormatter {
             return;
         }
 
-        System.out.println("Wrote to FileWriter: " + furnaceWorkEndFormat);
-
         try {
             fileWriter.flush();
             fileWriter.close();
@@ -120,7 +110,5 @@ public class FurnaceWork implements Runnable, ThreadStatusFormatter {
             System.out.println("Couldn't close furnaceWork w/ ID " + uniqueFurnaceWorkID + " file stream! Aborting com.lozanov.pizza creation!");
             e.printStackTrace();
         }
-
-        System.out.println("Closed FileWriter and flushed stream");
     }
 }

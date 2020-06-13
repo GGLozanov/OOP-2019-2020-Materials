@@ -11,19 +11,23 @@ import com.lozanov.pizza.Pizza;
 import com.lozanov.pizzaiolo.Pizzaiolo;
 
 import java.util.List;
+import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class Pizzeria {
-    private List<Ingredient> ingredients; // available ingredients (runnale)
-
+    private Set<Ingredient> ingredients; // available ingredients (runnale)
     private List<Furnace> furnaces; // available furnaces
-
     private List<Pizzaiolo> pizzaiolos; // the com.lozanov.pizza chefs (runnable)
+
     private ExecutorService pizzaioloExecutor = Executors.newCachedThreadPool();
 
-    public Pizzeria(List<Pizzaiolo> pizzaiolos, List<Ingredient> ingredients, List<Furnace> furnaces) {
+    public Pizzeria(List<Pizzaiolo> pizzaiolos, Set<Ingredient> ingredients, List<Furnace> furnaces) throws IllegalArgumentException {
+        if(pizzaiolos == null || ingredients == null || furnaces == null) {
+            throw new IllegalArgumentException();
+        }
+
         this.pizzaiolos = pizzaiolos;
         this.ingredients = ingredients;
         this.furnaces = furnaces;
@@ -37,11 +41,11 @@ public class Pizzeria {
         this.pizzaiolos = pizzaiolos;
     }
 
-    public List<Ingredient> getIngredients() {
+    public Set<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
+    public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 
@@ -53,7 +57,9 @@ public class Pizzeria {
         this.furnaces = furnaces;
     }
 
-    public void receiveOrder(Order order) throws NoPizzaioloException, NoFurnaceException {
+    public String receiveOrder(Order order) throws NoPizzaioloException, NoFurnaceException {
+        // returns a successful delivery message by courier upon delivered pizza; else null
+
         // find first free com.lozanov.pizzaiolo to create com.lozanov.pizza
         // and assign him to handle the com.lozanov.order
 
@@ -85,7 +91,8 @@ public class Pizzeria {
         // and put the com.lozanov.pizza there (by creating new thread?)
 
         // after com.lozanov.pizza is ready, create new com.lozanov.courier and execute deliverPizza() method
-        new Courier(orderedPizza.toString() + " Deliverer", orderedPizza).deliverPizza();
+        return new Courier(orderedPizza.toString() + " Deliverer", orderedPizza)
+                .deliverPizzaMessage();
             // deliver the com.lozanov.pizza requested
     }
 
@@ -107,7 +114,7 @@ public class Pizzeria {
 
     public void layOffPizzaiolos() throws InterruptedException {
         pizzaiolos.clear(); // clear pizzaiolo runnables
-        pizzaioloExecutor.shutdown(); // end executor service and disallow receing of new tasks
+        pizzaioloExecutor.shutdown(); // end executor service and disallow receiving of new tasks
         while(!pizzaioloExecutor.awaitTermination(24L, TimeUnit.HOURS)) {} // wait all threads in executor to finish (simulating join)
     }
 }

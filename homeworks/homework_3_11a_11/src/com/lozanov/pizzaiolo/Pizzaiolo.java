@@ -93,9 +93,9 @@ public class Pizzaiolo implements Runnable, ThreadStatusFormatter {
 
         try {
             if(pizzaioloFile.getParentFile().mkdirs() && pizzaioloFile.createNewFile()) {  // if a new file needs to be created
-                System.out.println("File created: " + pizzaioloFile.getName());
+                System.out.println("Pizzaiolo file created: " + pizzaioloFile.getName());
             } else {
-                System.out.println("File already exists: " + pizzaioloFile.getName());
+                System.out.println("Pizzaiolo file already exists: " + pizzaioloFile.getName());
             }
         } catch (IOException e) {
             System.out.println("Couldn't create com.lozanov.pizzaiolo" + fullName + " file! Aborting com.lozanov.pizza creation!");
@@ -128,7 +128,7 @@ public class Pizzaiolo implements Runnable, ThreadStatusFormatter {
 
         try {
             Thread.sleep(
-                (lastReceievedOrder.getPizza().getIngredients().size() * pizzaioloType.getIngredientParseTime()));
+                lastReceievedOrder.getPizza().getIngredients().size() * pizzaioloType.getIngredientParseTime());
                 // wait for time needed to parse all the ingredients (depending on the com.lozanov.pizzaiolo's skill level)
         } catch (InterruptedException e) {
             e.printStackTrace();

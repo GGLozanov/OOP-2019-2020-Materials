@@ -4,12 +4,13 @@ import com.lozanov.exceptions.InvalidPizzaException;
 import com.lozanov.ingredient.Ingredient;
 
 import java.util.List;
+import java.util.Set;
 
 public class Pizza {
-    private List<Ingredient> ingredients;
+    private Set<Ingredient> ingredients;
     private long bakingTime = 0;
 
-    public Pizza(List<Ingredient> ingredients) throws InvalidPizzaException {
+    public Pizza(Set<Ingredient> ingredients) throws InvalidPizzaException {
         this.ingredients = ingredients;
 
         if(!new PizzaValidator(this).validatePizza()) {
@@ -20,11 +21,11 @@ public class Pizza {
 
     }
 
-    public List<Ingredient> getIngredients() {
+    public Set<Ingredient> getIngredients() {
         return ingredients;
     }
 
-    public void setIngredients(List<Ingredient> ingredients) {
+    public void setIngredients(Set<Ingredient> ingredients) {
         this.ingredients = ingredients;
     }
 

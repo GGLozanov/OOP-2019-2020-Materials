@@ -27,7 +27,7 @@ public class PizzaValidator { // Could've used Collections.frequency here, but I
         int ingredientCount = ingredientFrequency.get(ingredientType);
         double ingredientBakingTime = ingredientType.getBakingTime();
 
-        /* com.lozanov.pizza.addBakingTime((long) (ingredientBakingTime +
+        /* pizza.addBakingTime((long) (ingredientBakingTime +
                         (ingredientCount / 10) * ingredientBakingTime)); */
 
          pizza.addBakingTime((long) (ingredientCount > 0 ?

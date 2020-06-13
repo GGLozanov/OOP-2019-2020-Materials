@@ -4,4 +4,8 @@ public class InvalidPizzaException extends Exception {
     public InvalidPizzaException(String message) {
         super(message);
     }
+
+    public InvalidPizzaException() {
+        super();
+    }
 }
