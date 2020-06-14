@@ -2,26 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fd5c35c5-fd4f-4137-b54f-03a242c07dbb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/CourierTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/PizzeriaTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/furnacefiles/furnaceWork15.txt" beforeDir="false" afterPath="$PROJECT_DIR$/furnacefiles/furnaceWork15.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/homework_3_11a_11/com/lozanov/courier/Courier.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/homework_3_11a_11/com/lozanov/courier/Courier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/homework_3_11a_11/com/lozanov/furnace/FurnaceWork.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/homework_3_11a_11/com/lozanov/furnace/FurnaceWork.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/homework_3_11a_11/com/lozanov/pizzaiolo/Pizzaiolo.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/homework_3_11a_11/com/lozanov/pizzaiolo/Pizzaiolo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lozanov/courier/Courier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lozanov/courier/Courier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lozanov/exceptions/InvalidPizzaException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lozanov/exceptions/InvalidPizzaException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/lozanov/furnace/Furnace.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lozanov/furnace/Furnace.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/lozanov/furnace/FurnaceWork.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lozanov/furnace/FurnaceWork.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lozanov/ingredient/Ingredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lozanov/ingredient/Ingredient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/lozanov/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lozanov/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lozanov/pizza/Pizza.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lozanov/pizza/Pizza.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/lozanov/pizza/PizzaValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lozanov/pizza/PizzaValidator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/lozanov/pizzaiolo/Pizzaiolo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lozanov/pizzaiolo/Pizzaiolo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/lozanov/pizzeria/Pizzeria.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/lozanov/pizzeria/Pizzeria.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/FurnaceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/FurnaceTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/PizzaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/PizzaTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/PizzaioloTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/PizzaioloTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/PizzeriaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/PizzeriaTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +57,7 @@
       <recent name="ingredient" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.test in homework_3_11a_11">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.lozanov.main.Main" />
       <module name="homework_3_11a_11" />
@@ -145,8 +132,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.test in homework_3_11a_11" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.PizzeriaTest" />
         <item itemvalue="JUnit.PizzaioloTest" />
         <item itemvalue="JUnit.CourierTest" />
@@ -171,10 +158,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Auto_Import/0.0.1920.1040@0.0.1920.1040" timestamp="1592058474969" />
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1592061974293">
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1592171455904">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1592061974293" />
+    <state x="765" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1592171455904" />
     <state x="690" y="296" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1592043127038">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -183,30 +170,30 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1592041151741" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1592062550492">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1592171674124">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592062550492" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1592062550491">
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1592171674124" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1592171674123">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592062550491" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1592062550491">
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1592171674123" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1592171674123">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592062550491" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1592062550491">
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1592171674123" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1592171674123">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592062550491" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1592171674123" />
     <state x="461" y="162" key="SettingsEditor" timestamp="1592053627181">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="162" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1592053627181" />
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1592038240951">
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1592163030533">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592038240951" />
+    <state x="656" y="344" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1592163030533" />
     <state x="664" y="413" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1592043147677">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

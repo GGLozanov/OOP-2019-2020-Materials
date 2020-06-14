@@ -1,10 +1,12 @@
 package com.lozanov.furnace;
 
+import com.lozanov.courier.Courier;
 import com.lozanov.interfaces.ThreadStatusFormatter;
 import com.lozanov.pizza.Pizza;
 
 import java.io.*;
 import java.time.LocalTime;
+import java.util.concurrent.CountDownLatch;
 
 import static java.lang.Thread.currentThread;
 
@@ -12,6 +14,10 @@ public class FurnaceWork implements Runnable, ThreadStatusFormatter {
     private int furnaceNumber;
     private int orderNumber;
     private Pizza requestedPizza;
+    // private final CountDownLatch countDownLatch = new CountDownLatch(1);
+        // class that simulates lock behaviour using a 'countdown' of sorts
+        // that can be decremented by 1 (from another calling thread, that's the point)
+        // the lock will release when the count reaches 0
 
     public FurnaceWork(int furnaceNumber, int orderNumber, Pizza requestedPizza) throws IllegalArgumentException {
         if(furnaceNumber < 0 || orderNumber < 0 || requestedPizza == null) {
@@ -110,5 +116,11 @@ public class FurnaceWork implements Runnable, ThreadStatusFormatter {
             System.out.println("Couldn't close furnaceWork w/ ID " + uniqueFurnaceWorkID + " file stream! Aborting com.lozanov.pizza creation!");
             e.printStackTrace();
         }
+
+        // after com.lozanov.pizza is ready, create new com.lozanov.courier and execute deliverPizza() method
+        new Courier(requestedPizza.toString() + " Deliverer", requestedPizza)
+                .deliverPizza();
+        // deliver the com.lozanov.pizza requested
     }
+
 }

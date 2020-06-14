@@ -56,9 +56,7 @@ class PizzeriaTest {
     void assertReceiveOrderCorrect() throws InvalidPizzaException, NoFurnaceException, NoPizzaioloException, InterruptedException {
         pizzeria = new Pizzeria(pizzeriaPizzaiolos, pizzeriaIngredients, pizzeriaFurnaces);
 
-        String deliveryMessage = pizzeria.receiveOrder(new Order(1, new Pizza(pizzeriaIngredients)));
-
-        assertNotNull(deliveryMessage);
+        assertDoesNotThrow(() -> pizzeria.receiveOrder(new Order(1, new Pizza(pizzeriaIngredients))));
 
         pizzeria.closePizzeria(); // can't use AfterEach because not every method uses the pizzeria object (!)
     }

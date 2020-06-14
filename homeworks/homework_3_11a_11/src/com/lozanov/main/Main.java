@@ -12,6 +12,7 @@ import com.lozanov.pizzaiolo.Pizzaiolo;
 import com.lozanov.pizzeria.Pizzeria;
 
 import java.util.*;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Main {
@@ -143,12 +144,16 @@ public class Main {
 
         orders.forEach(order -> {
             try {
-                String deliveredMessage = pizzeria.receiveOrder(order);
-                System.out.println(deliveredMessage);
+                pizzeria.receiveOrder(order);
             } catch(NoPizzaioloException e) {
                 System.out.println("No active com.lozanov.pizzaiolo to take current com.lozanov.order!");
             } catch(NoFurnaceException e) {
                 System.out.println("No active com.lozanov.furnace to take current com.lozanov.order!");
+            } catch (InterruptedException e) {
+                System.out.println("Collection of Future result (wait() simulation for pizzaiolos) interrupted!");
+                e.printStackTrace();
+            } catch (ExecutionException e) {
+                e.printStackTrace();
             }
         });
 

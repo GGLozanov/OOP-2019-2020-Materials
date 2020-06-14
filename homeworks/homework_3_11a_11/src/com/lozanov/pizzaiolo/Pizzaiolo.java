@@ -1,11 +1,14 @@
 package com.lozanov.pizzaiolo;
 
 import com.lozanov.enums.PizzaioloType;
+import com.lozanov.furnace.Furnace;
+import com.lozanov.furnace.FurnaceWork;
 import com.lozanov.interfaces.ThreadStatusFormatter;
 import com.lozanov.order.Order;
 
 import java.io.*;
 import java.time.LocalTime;
+import java.util.concurrent.CountDownLatch;
 
 public class Pizzaiolo implements Runnable, ThreadStatusFormatter {
     private String fullName;
@@ -83,9 +86,9 @@ public class Pizzaiolo implements Runnable, ThreadStatusFormatter {
     }
 
     @Override
-    public void run() throws IllegalStateException {
+    public synchronized void run() throws IllegalStateException {
         if(lastReceievedOrder == null) {
-            throw new IllegalStateException();
+            throw new IllegalStateException(); // either no order or no furnace query to put have the pizza baked in
         }
 
         isPizzaioloRunning = true;
@@ -132,7 +135,6 @@ public class Pizzaiolo implements Runnable, ThreadStatusFormatter {
                 // wait for time needed to parse all the ingredients (depending on the com.lozanov.pizzaiolo's skill level)
         } catch (InterruptedException e) {
             e.printStackTrace();
-            isPizzaioloRunning = false;
         }
 
         String pizzaioloEndFormat = getFormat(false);
@@ -157,6 +159,7 @@ public class Pizzaiolo implements Runnable, ThreadStatusFormatter {
         }
 
         isPizzaioloRunning = false;
+
     }
 
 }

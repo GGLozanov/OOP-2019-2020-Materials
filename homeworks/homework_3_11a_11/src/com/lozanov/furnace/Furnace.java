@@ -41,7 +41,7 @@ public class Furnace {
 
     public void endFurnaceWorkQueries() throws InterruptedException { // removes all the pizzaquery runnables and shuts down the com.lozanov.furnace (exec. service)
         furnaceWorkExecutor.shutdown(); // shut down furnace work executor (recieves no more threads)
-        while (!furnaceWorkExecutor.awaitTermination(24L, TimeUnit.HOURS)) {} // wait all threads in executor to finish (simulating join)
+        while(!furnaceWorkExecutor.awaitTermination(24L, TimeUnit.HOURS)) {} // wait all threads in executor to finish (simulating join)
     }
 
     public boolean isFull() {
